@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import axios from 'axios';
 
 const UserRegister = () => {
     const [username, setUsername] = useState('');
@@ -8,8 +9,24 @@ const UserRegister = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        // Perform user registration logic here
-        console.log(`User registration with username: ${username} and password: ${password}`);
+        
+        // Send registration data to backend
+        axios.post('http://localhost:8000/user/register', { username, password })
+            .then(response => {
+                if (response.data.success) {
+                    // Registration successful
+                    console.log('User registered successfully');
+                    // Optionally, redirect user to login page or perform other actions
+                } else {
+                    // Registration failed
+                    console.error('Failed to register user:', response.data.error);
+                    // Optionally, display an error message to the user
+                }
+            })
+            .catch(error => {
+                console.errr('Error registering user:', error);
+                // Optionally, display an error message to the user
+            });
     };
 
     return (
