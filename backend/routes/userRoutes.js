@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
                 // Compare passwords
                 if (password === user.password) {
                     // Passwords match
-                    res.json({ success: true });
+                    res.json({ success: true, user });
                 } else {
                     // Passwords don't match
                     res.status(401).json({ error: 'Invalid username or password', success: false });
@@ -45,7 +45,7 @@ router.post('/login', (req, res) => {
     });
   });
   
-  // User registration route
+// User registration route
 router.post('/register', (req, res) => {
     const { username, password } = req.body;
   
@@ -72,6 +72,54 @@ router.post('/register', (req, res) => {
         }
     });
   });
+  
+
+//delete user
+router.delete("/:id",(req,res) => {
+    const userId = req.params.id;
+
+    // Query the database to delete the user
+    db.query('DELETE FROM users WHERE idusers = ?', [userId], (err, results) => {
+        if (err) {
+            console.error('Error deleting user:', err);
+            res.status(500).json({ error: 'Failed to delete user' });
+        } else {
+            res.status(200).json({ message: 'User deleted successfully' });
+        }
+    });
+})
+
+// update route
+
+// Update user route
+router.put("/:id", (req, res) => {
+    const userId = req.params.id;
+    const { username, password } = req.body;
+
+    // Check if the user exists
+    db.query('SELECT * FROM users WHERE idusers = ?', [userId], (err, results) => {
+        if (err) {
+            console.error('Error checking user:', err);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            if (results.length === 0) {
+                // User not found
+                res.status(404).json({ error: 'User not found' });
+            } else {
+                // User found, update user data
+                db.query('UPDATE users SET username = ?, password = ? WHERE idusers = ?', [username, password, userId], (err, results) => {
+                    if (err) {
+                        console.error('Error updating user:', err);
+                        res.status(500).json({ error: 'Failed to update user' });
+                    } else {
+                        res.status(200).json({ message: 'User updated successfully' });
+                    }
+                });
+            }
+        }
+    });
+});
+
   
   
 

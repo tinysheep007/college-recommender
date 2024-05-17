@@ -31,7 +31,7 @@ router.post('/login', (req, res) => {
           // Compare passwords
           if (password === admin.password) {
             // Passwords match
-            res.json({ success: true });
+            res.json({ success: true, admin });
           } else {
             // Passwords don't match
             res.status(401).json({ error: 'Invalid username or password',  success: false });
@@ -71,7 +71,8 @@ router.post('/register', (req, res) => {
               console.error('Error registering admin:', err);
               res.status(500).json({ error: 'Failed to register admin' });
             } else {
-              res.json({ success: true });
+              user = {username, password}
+              res.json({ success: true, user });
             }
           });
         }
