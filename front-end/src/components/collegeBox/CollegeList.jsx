@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+// CollegeList.jsx
+import React from 'react';
 import CollegeCard from './CollegeCard.jsx';
 
-const CollegeList = ({ data }) => {
-
+const CollegeList = ({ data, onDelete, showDeleteButton }) => {
     return (
         <div>
             {data.map(college => (
-                < CollegeCard key={college.name} name={college.name} picURL={college.picURL} />
+                <CollegeCard key={college.idCollege} data={college} onDelete={onDelete} showDeleteButton={showDeleteButton} />
             ))}
         </div>
     )

@@ -13,6 +13,9 @@ import AdminNotice from './components/AdminNotice';
 import UserRegister from './components/UserRegister';
 import UserProfile from './components/UserProfile';
 import UserNotice from './components/UserNotice';
+import UserLikedColleges from './components/UserLikedColleges';
+import CollegeDetail from './components/collegeBox/CollegeDetail';
+
 
 const App = () => {
   return (
@@ -30,6 +33,9 @@ const App = () => {
           <Route path="/user/register" element={<UserRegister />} />
           <Route path='/user/profile'element={<UserProfile />} />
           <Route path='/user/notices' element={<UserNotice />}/>
+          <Route path='/user/likedColleges' element={<UserLikedColleges />}/>
+
+          <Route path='/college/:id' element={<CollegeDetail />}/>
 
         </Routes>
       </Router>
