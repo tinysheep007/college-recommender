@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext.js';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const CollegeDetail = () => {
+    const { user } = useAuth();
     const { id } = useParams();
     const [college, setCollege] = useState(null);
+    const [ idusers, setIdUsers ] = useState(0);
 
     useEffect(() => {
         fetchCollegeDetails();
+        setIdUsers(user.idusers)
     }, []);
 
     const fetchCollegeDetails = () => {
@@ -16,13 +20,32 @@ const CollegeDetail = () => {
             .then(response => {
                 setCollege(response.data);
             })
-            .catch(error => console.error('Error fetching college details:', error));
+            .catch(error => console.loh(error));
     };
+
+    
+
+    const likeNewCollege = () => {
+        // console.log(idusers)
+        // console.log(college.idCollege)
+        axios.put(`http://localhost:8000/college/userLikedColleges/${idusers}/${college.idCollege}`)
+            .then((response)=>{
+                if (response.data.success){
+                    alert("one new colleged saved!");
+                }
+                else{
+                    console.log("error")
+                }
+            }).catch((err)=>{
+                // console.log('Error liking college:');
+                alert(`Error liking college: ${err.response.data.error}`);
+            })
+    }
 
     return (
         <div className="container mt-5">
             <Link to="/landingPage" className="btn btn-success">Back to Landing Page</Link>
-            <button className='btn'>Like</button>
+            <button className='btn' onClick={likeNewCollege}>Like</button>
             {college ? (
                 <div>
                     <h1>{college.collegeName}</h1>

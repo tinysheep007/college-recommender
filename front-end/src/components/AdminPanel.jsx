@@ -28,7 +28,7 @@ const AdminPanel = () => {
         // Fetch users data from backend API using Axios
         axios.get('http://localhost:8000/user/getAll')
             .then(response => setUsers(response.data))
-            .catch(error => console.error('Error fetching users:', error));
+            .catch(error => console.log('Error fetching users:'));
     };
 
     const deleteUser = (id) => {
@@ -117,8 +117,9 @@ const AdminPanel = () => {
         <div className="container">
             <h2 className="mt-5">Admin Panel</h2>
             <p>Welcome, {admin && admin.username}</p> 
-            <button className="btn btn-danger" onClick={handleAdminLogout}>Logout </button>
-            <button className="btn btn-danger" onClick={handleAdminNotice}> Manage Notice </button>
+            <button className="btn btn-danger me-3" onClick={handleAdminLogout}>Logout </button>
+            <button className="btn btn-danger me-3" onClick={handleAdminNotice}> Manage Notice </button>
+            <button className="btn btn-danger me-3" onClick={()=>navigate("/admin/manageCollege")}> Manage Colleges</button>
             <div className="mb-3">
                 <button className="btn btn-success" onClick={() => setShowModal(true)}>Add New User</button>
             </div>

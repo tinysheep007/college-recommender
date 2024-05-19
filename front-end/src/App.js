@@ -9,6 +9,7 @@ import LandingPage from './components/LandingPage';
 import AdminRegister from './components/AdminRegister';
 import AdminPanel from './components/AdminPanel';
 import AdminNotice from './components/AdminNotice';
+import AdminManageCollege from './components/AdminManageCollege';
 
 import UserRegister from './components/UserRegister';
 import UserProfile from './components/UserProfile';
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/admin/register" element={<AdminRegister />}/>
           <Route path="/admin/Panel" element={<AdminPanel />}/>
           <Route path="/admin/notices" element={<AdminNotice />}/>
+          <Route path='/admin/manageCollege' element={<AdminManageCollege />}/>
 
           <Route path="/user/register" element={<UserRegister />} />
           <Route path='/user/profile'element={<UserProfile />} />

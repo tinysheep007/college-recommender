@@ -29,7 +29,7 @@ const LandingPage = () => {
         axios.get("http://localhost:8000/college/getAll")
             .then(response => {
                 setCollegeData(response.data)
-                console.log(response.data)
+                // console.log(response.data)
             })
             .catch(error => console.error('Error fetching users:', error));
     }

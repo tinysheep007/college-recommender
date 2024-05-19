@@ -13,7 +13,7 @@ const UserNotice = () => {
     const fetchNotices = () => {
         axios.get('http://localhost:8000/notice/getAll')
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 setNotices(response.data);
             })
             .catch(error => console.error('Error fetching notices:', error));
