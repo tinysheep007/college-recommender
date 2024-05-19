@@ -30,14 +30,14 @@ export const AuthProvider = ({ children }) => {
         setUser(response.data.user);
         setIsAuthenticated(true);
         localStorage.setItem('user', JSON.stringify(response.data.user));
-        return {status: true, error: "none"}; // Login successful
+        return { status: true, error: "none" }; // Login successful
       } else {
         console.error('User login failed:', response.data.error);
-        return {status: false, error: response.data.error}; // Login failed
+        return { status: false, error: response.data.error }; // Login failed
       }
     } catch (error) {
       console.error('Error:', error);
-      return {status: false, error}; // Login failed due to error
+      return { status: false, error }; // Login failed due to error
     }
   };
 
@@ -48,14 +48,14 @@ export const AuthProvider = ({ children }) => {
         setAdmin(response.data.admin);
         setIsAuthenticated(true);
         localStorage.setItem('admin', JSON.stringify(response.data.admin));
-        return {status: true, error: "none" }; // Login successful
+        return { status: true, error: "none" }; // Login successful
       } else {
         console.error('Admin login failed:', response.data.error);
-        return {status: false, error: response.data.error }; // Login failed
+        return { status: false, error: response.data.error }; // Login failed
       }
     } catch (error) {
       console.error('Error:', error);
-      return {status: false, error: error }; // Login failed due to error
+      return { status: false, error: error }; // Login failed due to error
     }
   };
 
@@ -79,8 +79,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+  };
+
   return (
-    <AuthContext.Provider value={{ user, admin, isAuthenticated, userLogin, adminLogin, userLogout, adminLogout }}>
+    <AuthContext.Provider value={{ user, admin, isAuthenticated, userLogin, adminLogin, userLogout, adminLogout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

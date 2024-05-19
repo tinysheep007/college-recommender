@@ -24,7 +24,7 @@ const LandingPage = () => {
 
             <div className="my-3">
                 <Link to="/user/profile" className="btn btn-success me-2">User Profile</Link>
-                <Link to="/notice" className="btn btn-success">User Notice</Link>
+                <Link to="/user/notices" className="btn btn-success">User Notice</Link>
                 { user && (
                     <Link to="/login" className="btn" onClick={handleUserLogOut}>
                         logout

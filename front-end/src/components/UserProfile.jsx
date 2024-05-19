@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 import { useAuth } from '../context/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const UserProfile = () => {
-    const { user } = useAuth();
+    const { user, updateUser } = useAuth();
     const [username, setUsername] = useState(user ? user.username : '');
     const [password, setPassword] = useState(user ? user.password : '');
     const [SAT, setSAT] = useState(1200);
@@ -13,16 +13,18 @@ const UserProfile = () => {
     const [extra, setExtra] = useState("music, marching band");
 
     const handleSave = async (field) => {
+        console.log(user)
         try {
             const updatedUser = {
                 ...user,
                 [field]: field === 'username' ? username : password
             };
             // Assuming you have an endpoint to update user information
-            const response = await axios.put(`http://localhost:8000/user/${user.id}`, updatedUser);
+            const response = await axios.put(`http://localhost:8000/user/${user.idusers}`, updatedUser);
             if (response.data.success) {
                 alert('User information updated successfully');
-                // Optionally update the context or local state here
+                // Update the context with the new user data
+                updateUser(updatedUser);
             } else {
                 console.error('Failed to update user information:', response.data.error);
             }

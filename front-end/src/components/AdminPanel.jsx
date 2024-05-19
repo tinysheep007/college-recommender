@@ -57,13 +57,13 @@ const AdminPanel = () => {
                     // Optionally, redirect user to login page or perform other actions
                 } else {
                     // Registration failed
-                    console.error('Failed to register user:', response.data.error);
+                    console.log('Failed to register user:', response.data.error);
                     // Optionally, display an error message to the user
                     alert('Failed to register user:', response.data.error)
                 }
             })
             .catch(error => {
-                console.errr('Error registering user:', error);
+                alert('Error registering user:', error);
                 // Optionally, display an error message to the user
             });
 
@@ -109,11 +109,16 @@ const AdminPanel = () => {
         navigate("/login")
     }
 
+    const handleAdminNotice = () => {
+        navigate("/admin/notices")
+    }
+
     return (
         <div className="container">
             <h2 className="mt-5">Admin Panel</h2>
             <p>Welcome, {admin && admin.username}</p> 
             <button className="btn btn-danger" onClick={handleAdminLogout}>Logout </button>
+            <button className="btn btn-danger" onClick={handleAdminNotice}> Manage Notice </button>
             <div className="mb-3">
                 <button className="btn btn-success" onClick={() => setShowModal(true)}>Add New User</button>
             </div>
