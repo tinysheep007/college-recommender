@@ -89,8 +89,6 @@ router.delete("/:id",(req,res) => {
     });
 })
 
-// update route
-
 // Update user route
 router.put("/:id", (req, res) => {
     const userId = req.params.id;
@@ -112,7 +110,7 @@ router.put("/:id", (req, res) => {
                         console.error('Error updating user:', err);
                         res.status(500).json({ error: 'Failed to update user' });
                     } else {
-                        res.status(200).json({ message: 'User updated successfully' });
+                        res.status(200).json({ success: true, message: 'User updated successfully' });
                     }
                 });
             }
