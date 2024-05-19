@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes.js'); // Adjusted path
 const adminRoutes = require('./routes/adminRoutes.js'); // Adjusted path
 const noticeRoutes = require('./routes/noticeRoutes.js');
+const collegeRoutes = require('./routes/collegeRoutes.js');
+
 const cors = require('cors');
 
 const app = express();
@@ -20,6 +22,9 @@ app.use('/admin', adminRoutes);
 
 // Mount notice routes
 app.use('/notice', noticeRoutes);
+
+// Mount colleg routes
+app.use('/college', collegeRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
