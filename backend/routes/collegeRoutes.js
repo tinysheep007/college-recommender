@@ -33,12 +33,14 @@ router.get('/:id', (req, res) => {
 router.post('/create', (req, res) => {
     const { collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks, idCollegeDetails, loc } = req.body;
     
+    console.log()
+
     if (!collegeName){
         res.status(500).json({ error: 'missing college name' });
     }
 
 
-    db.query('INSERT INTO collegebasics (collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks, idCollegeDetails, loc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+    db.query('INSERT INTO collegebasics (collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks, idCollegeDetails, loc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
         [collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks, idCollegeDetails, loc], 
         (err, results) => {
         if (err) {
@@ -51,8 +53,8 @@ router.post('/create', (req, res) => {
 });
 
 // Update a college by id
-router.put('/:id', (req, res) => {
-    const idCollege = req.params.id;
+router.put('/:idCollege', (req, res) => {
+    const idCollege = req.params.idCollege;
     const fields = req.body;
     
     if (Object.keys(fields).length === 0) {
@@ -78,7 +80,7 @@ router.put('/:id', (req, res) => {
         } else if (results.affectedRows === 0) {
             return res.status(404).json({ error: 'College not found' });
         } else {
-            return res.json({ message: 'College updated successfully' });
+            return res.json({ success: true, message: 'College updated successfully' });
         }
     });
 });
@@ -95,7 +97,7 @@ router.delete('/:id', (req, res) => {
         } else if (results.affectedRows === 0) {
             res.status(404).json({ error: 'College not found' });
         } else {
-            res.json({ message: 'College deleted successfully' });
+            res.json({ success: true, message: 'College deleted successfully' });
         }
     });
 });
@@ -170,7 +172,7 @@ router.put('/userLikedColleges/:idusers/:idCollege', (req, res) => {
                         return res.status(500).json({ error: 'Failed to add liked college' });
                     }
 
-                    res.status(201).json({ message: 'College liked successfully', id: insertResults.insertId });
+                    res.status(201).json({ success: true, message: 'College liked successfully', id: insertResults.insertId });
                 });
             });
         });
