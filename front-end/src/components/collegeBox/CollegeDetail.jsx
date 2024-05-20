@@ -52,9 +52,9 @@ const CollegeDetail = () => {
                     <img src={college.picURL} alt={college.collegeName} className="img-fluid mb-3" style={{ maxHeight: '400px', objectFit: 'cover' }} />
                     <p><strong>Average SAT:</strong> {college.aveSAT}</p>
                     <p><strong>Average GPA:</strong> {college.aveGPA}</p>
-                    <p><strong>Tuition:</strong> {college.aveTuitionPerYr}</p>
+                    <p><strong>Tuition:</strong> {college.tuition}</p>
                     <p><strong>Acceptance Rate:</strong> {college.accRate}</p>
-                    <p><strong>Rank:</strong> {college.rankUSNEWS}</p>
+                    <p><strong>Rank:</strong> {college.ranks}</p>
                     {/* Add more details as needed */}
                 </div>
             ) : (
