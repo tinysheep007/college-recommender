@@ -194,4 +194,98 @@ router.delete('/userLikedColleges/:iduserlikedcolleges', (req, res) => {
     });
 });
 
+
+
+
+// Get all colleges from collegeinfo
+router.get('/collegeinfo/getAll', (req, res) => {
+    db.query('SELECT * FROM collegeinfo', (err, results) => {
+        if (err) {
+            console.error('Error fetching college info:', err);
+            res.status(500).json({ error: 'Failed to fetch college info' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// Get a single college info by id
+router.get('/collegeinfo/:id', (req, res) => {
+    const idCollege = req.params.id;
+    db.query('SELECT * FROM collegeinfo WHERE idCollege = ?', [idCollege], (err, results) => {
+        if (err) {
+            console.error('Error fetching college info:', err);
+            res.status(500).json({ error: 'Failed to fetch college info' });
+        } else if (results.length === 0) {
+            res.status(404).json({ error: 'College info not found' });
+        } else {
+            res.json(results[0]);
+        }
+    });
+});
+
+// Create a new college info
+router.post('/collegeinfo/create', (req, res) => {
+    const { academic, value, safety, location, athletics, life, idCollege } = req.body;
+
+    db.query('INSERT INTO collegeinfo (academic, value, safety, location, athletics, life, idCollege) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [academic, value, safety, location, athletics, life, idCollege],
+        (err, results) => {
+            if (err) {
+                console.error('Error creating college info:', err);
+                res.status(500).json({ error: 'Failed to create college info' });
+            } else {
+                res.status(201).json({ message: 'College info created successfully', id: results.insertId });
+            }
+        });
+});
+
+// Update college info by id
+router.put('/collegeinfo/:idCollege', (req, res) => {
+    const idCollege = req.params.idCollege;
+    const fields = req.body;
+
+    if (Object.keys(fields).length === 0) {
+        return res.status(400).json({ error: 'No fields provided for update' });
+    }
+
+    let query = 'UPDATE collegeinfo SET ';
+    const values = [];
+    for (const [key, value] of Object.entries(fields)) {
+        query += `${key} = ?, `;
+        values.push(value);
+    }
+
+    // Remove the trailing comma and space
+    query = query.slice(0, -2);
+    query += ' WHERE idCollege = ?';
+    values.push(idCollege);
+
+    db.query(query, values, (err, results) => {
+        if (err) {
+            console.error('Error updating college info:', err);
+            return res.status(500).json({ error: 'Failed to update college info' });
+        } else if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'College info not found' });
+        } else {
+            return res.json({ success: true, message: 'College info updated successfully' });
+        }
+    });
+});
+
+// Delete college info by id
+router.delete('/collegeinfo/:id', (req, res) => {
+    const idCollege = req.params.id;
+    db.query('DELETE FROM collegeinfo WHERE idCollege = ?', [idCollege], (err, results) => {
+        if (err) {
+            console.error('Error deleting college info:', err);
+            res.status(500).json({ error: 'Failed to delete college info' });
+        } else if (results.affectedRows === 0) {
+            res.status(404).json({ error: 'College info not found' });
+        } else {
+            res.json({ success: true, message: 'College info deleted successfully' });
+        }
+    });
+});
+
 module.exports = router;

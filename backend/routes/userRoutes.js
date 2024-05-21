@@ -118,7 +118,102 @@ router.put("/:id", (req, res) => {
     });
 });
 
-  
+// get all user academic info
+router.get("/academic/getAll", (req,res)=>{
+    db.query('SELECT * FROM useracademic', (err, results) => {
+        if (err) {
+            console.error('Error fetching users:', err);
+            res.status(500).json({ error: 'Failed to fetch users' });
+        } else {
+            res.json(results);
+        }
+    });
+})
+
+// get 1 specific info
+router.get("/academic/:idusers", (req,res)=>{
+    const idusers = req.params.idusers
+    db.query('SELECT * FROM useracademic where idusers = ?', idusers, (err, results) => {
+        if (err) {
+            console.error('Error fetching users:', err);
+            res.status(500).json({ error: 'Failed to fetch users' });
+        } else {
+            res.json({success: true , results});
+        }
+    });
+})
+
+// Create user academic info
+router.post("/academic/create", (req, res) => {
+    const { idusers, SAT, GPA, extra, others, majors } = req.body;
+
+    if (!idusers) {
+        return res.status(400).json({ error: "User ID is required" });
+    }
+
+    // Check if the user exists
+    db.query('SELECT idusers FROM users WHERE idusers = ?', [idusers], (err, results) => {
+        if (err) {
+            console.error('Error verifying user:', err);
+            return res.status(500).json({ error: 'Failed to verify user' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Insert the academic information
+        const insertQuery = `
+            INSERT INTO useracademic (idusers, SAT, GPA, extra, others, majors)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `;
+        db.query(insertQuery, [idusers, SAT, GPA, extra, others, majors], (err, result) => {
+            if (err) {
+                console.error('Error adding academic info:', err);
+                return res.status(500).json({ error: 'Failed to add academic info' });
+            }
+
+            res.status(201).json({ message: 'User academic info added successfully' });
+        });
+    });
+});
+
+
+// update user academic info
+router.put("/academic/update", (req, res) => {
+    const { idusers, SAT, GPA, extra, others, majors } = req.body;
+
+    if (!idusers) {
+        return res.status(400).json({ error: "User ID is required" });
+    }
+
+    // Check if the user exists
+    db.query('SELECT idusers FROM users WHERE idusers = ?', [idusers], (err, results) => {
+        if (err) {
+            console.error('Error verifying user:', err);
+            return res.status(500).json({ error: 'Failed to verify user' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Update the academic information
+        const updateQuery = `
+            UPDATE useracademic 
+            SET SAT = ?, GPA = ?, extra = ?, others = ?, majors = ?
+            WHERE idusers = ?
+        `;
+        db.query(updateQuery, [SAT, GPA, extra, others, majors, idusers], (err, result) => {
+            if (err) {
+                console.error('Error updating academic info:', err);
+                return res.status(500).json({ error: 'Failed to update academic info' });
+            }
+
+            res.status(200).json({ message: 'User academic info updated successfully' });
+        });
+    });
+});
   
 
 module.exports = router;
