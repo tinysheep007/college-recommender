@@ -228,16 +228,29 @@ router.get('/collegeinfo/:id', (req, res) => {
 router.post('/collegeinfo/create', (req, res) => {
     const { academic, value, safety, location, athletics, life, idCollege } = req.body;
 
-    db.query('INSERT INTO collegeinfo (academic, value, safety, location, athletics, life, idCollege) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [academic, value, safety, location, athletics, life, idCollege],
-        (err, results) => {
-            if (err) {
-                console.error('Error creating college info:', err);
-                res.status(500).json({ error: 'Failed to create college info' });
-            } else {
+    // First, check if the idCollege exists in the collegebasics table
+    db.query('SELECT idCollege FROM collegebasics WHERE idCollege = ?', [idCollege], (err, results) => {
+        if (err) {
+            console.error('Error checking college ID:', err);
+            return res.status(500).json({ error: 'Failed to check college ID' });
+        }
+
+        if (results.length === 0) {
+            // idCollege does not exist in collegebasics table
+            return res.status(404).json({ error: 'College ID does not exist in the basics table' });
+        }
+
+        // idCollege exists, proceed with the insertion into collegeinfo table
+        db.query('INSERT INTO collegeinfo (academic, value, safety, location, athletics, life, idCollege) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [academic, value, safety, location, athletics, life, idCollege],
+            (err, results) => {
+                if (err) {
+                    console.error('Error creating college info:', err);
+                    return res.status(500).json({ error: 'Failed to create college info' });
+                }
                 res.status(201).json({ message: 'College info created successfully', id: results.insertId });
-            }
-        });
+            });
+    });
 });
 
 // Update college info by id
@@ -287,5 +300,79 @@ router.delete('/collegeinfo/:id', (req, res) => {
         }
     });
 });
+
+
+// Get all comments for a college
+router.get('/collegecomment/:id', (req, res) => {
+    const idCollege = req.params.id;
+    db.query('SELECT * FROM collegecomments WHERE idcollege = ?', [idCollege], (err, results) => {
+        if (err) {
+            console.error('Error fetching comments:', err);
+            res.status(500).json({ error: 'Failed to fetch comments' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// Create a new comment
+router.post('/collegecomment/create', (req, res) => {
+    const { idusers, idCollege, message } = req.body;
+
+    // Check if the college ID exists
+    db.query('SELECT idCollege FROM collegebasics WHERE idCollege = ?', [idCollege], (err, collegeResults) => {
+        if (err) {
+            console.error('Error checking college ID:', err);
+            return res.status(500).json({ error: 'Failed to check college ID' });
+        }
+
+        if (collegeResults.length === 0) {
+            return res.status(404).json({ error: 'College ID not found' });
+        }
+
+        // Insert the new comment into the collegecomments table
+        db.query('INSERT INTO collegecomments (idusers, idCollege, message) VALUES (?, ?, ?)', [idusers, idCollege, message], (err, insertResults) => {
+            if (err) {
+                console.error('Error adding comment:', err);
+                return res.status(500).json({ error: 'Failed to add comment' });
+            }
+
+            res.status(201).json({ success: true, message: 'Comment added successfully', id: insertResults.insertId });
+        });
+    });
+});
+
+// Update a comment by id
+router.put('/collegecomment/:id', (req, res) => {
+    const idComment = req.params.id;
+    const { message } = req.body;
+
+    db.query('UPDATE collegecomments SET message = ? WHERE idcollegecomments = ?', [message, idComment], (err, results) => {
+        if (err) {
+            console.error('Error updating comment:', err);
+            return res.status(500).json({ error: 'Failed to update comment' });
+        } else if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'Comment not found' });
+        } else {
+            return res.json({ success: true, message: 'Comment updated successfully' });
+        }
+    });
+});
+
+// Delete a comment by id
+router.delete('/collegecomment/:id', (req, res) => {
+    const idComment = req.params.id;
+    db.query('DELETE FROM collegecomments WHERE idcollegecomments = ?', [idComment], (err, results) => {
+        if (err) {
+            console.error('Error deleting comment:', err);
+            res.status(500).json({ error: 'Failed to delete comment' });
+        } else if (results.affectedRows === 0) {
+            res.status(404).json({ error: 'Comment not found' });
+        } else {
+            res.json({ success: true, message: 'Comment deleted successfully' });
+        }
+    });
+});
+
 
 module.exports = router;
