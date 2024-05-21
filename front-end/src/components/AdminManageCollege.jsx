@@ -193,6 +193,7 @@ const AdminManageCollege = () => {
             <h1>Manage Colleges</h1>
             <button className="btn btn-primary me-3" onClick={handleAddCollege}>Add College</button>
             <button className="btn btn-primary me-3" onClick={()=>navigate("/admin/Panel")}>Back to Panel</button>
+            <button className="btn btn-danger me-3" onClick={()=>navigate("/admin/manageCollegeInfo")}>Manage College Infos/Details</button>
             <div className="row">
                 {colleges.map(college => (
                     <div className="col-md-4 mb-3" key={college.idCollege}>

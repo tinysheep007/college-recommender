@@ -8,12 +8,9 @@ const UserProfile = () => {
     const { user, updateUser } = useAuth();
     const [username, setUsername] = useState(user ? user.username : '');
     const [password, setPassword] = useState(user ? user.password : '');
-    const [SAT, setSAT] = useState(1200);
-    const [GPA, setGPA] = useState(3.5);
-    const [extra, setExtra] = useState("music, marching band");
 
     const handleSave = async (field) => {
-        console.log(user)
+        // console.log(user)
         try {
             const updatedUser = {
                 ...user,
@@ -38,7 +35,8 @@ const UserProfile = () => {
             {user ? (
                 <div>
                     <h2>User Profile</h2>
-                    <Link to="/landingPage" className='btn btn-success'>Landing Page</Link>
+                    <Link to="/landingPage" className='btn btn-success me-3'>Landing Page</Link>
+                    <Link to="/user/academic" className='btn btn-danger'>Edit Academic Profile</Link>
                     <div className="mb-3 row">
                         <label className="col-sm-2 col-form-label">Username:</label>
                         <div className="col-sm-8">
@@ -68,69 +66,6 @@ const UserProfile = () => {
                                 className="form-control"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <div className="col-sm-2">
-                            <button
-                                className="btn btn-primary"
-                                onClick={() => handleSave('password')}
-                            >
-                                Save
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div className="mb-3 row">
-                        <label className="col-sm-2 col-form-label">SAT:</label>
-                        <div className="col-sm-8">
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={SAT}
-                                onChange={(e) => setSAT(e.target.value)}
-                            />
-                        </div>
-                        <div className="col-sm-2">
-                            <button
-                                className="btn btn-primary"
-                                onClick={() => handleSave('password')}
-                            >
-                                Save
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div className="mb-3 row">
-                        <label className="col-sm-2 col-form-label">GPA:</label>
-                        <div className="col-sm-8">
-                            <input
-                                type="number"
-                                className="form-control"
-                                value={GPA}
-                                onChange={(e) => setGPA(e.target.value)}
-                            />
-                        </div>
-                        <div className="col-sm-2">
-                            <button
-                                className="btn btn-primary"
-                                onClick={() => handleSave('password')}
-                            >
-                                Save
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div className="mb-3 row">
-                        <label className="col-sm-2 col-form-label">Extra:</label>
-                        <div className="col-sm-8">
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={extra}
-                                onChange={(e) => setExtra(e.target.value)}
                             />
                         </div>
                         <div className="col-sm-2">
