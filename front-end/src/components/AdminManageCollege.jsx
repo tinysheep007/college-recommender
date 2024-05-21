@@ -282,6 +282,13 @@ const AdminManageCollege = () => {
                                 <label htmlFor="collegeName" className="form-label">College Name:</label>
                                 <input type="text" id="collegeName" className="form-control" name="collegeName" value={selectedCollege.collegeName} onChange={handleEditChange} />
                             </div>
+
+                            <div className="mb-3">
+                                <label htmlFor="collegeName" className="form-label">College id:</label>
+                                <div>
+                                    <label>{selectedCollege.idCollege}</label>
+                                </div>
+                            </div>
                             
                             <div className="mb-3">
                                 <label htmlFor="picURL" className="form-label">Image URL:</label>

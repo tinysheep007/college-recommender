@@ -51,7 +51,7 @@ const Login = () => {
                     <input type="checkbox" className="form-check-input" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
                     <label className="form-check-label">Login as Admin</label>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary me-3">Login</button>
                 <Link to="/" className="btn btn-success">Home</Link>
             </form>
             <div className="mt-3">

@@ -120,9 +120,8 @@ const AdminPanel = () => {
             <button className="btn btn-danger me-3" onClick={handleAdminLogout}>Logout </button>
             <button className="btn btn-danger me-3" onClick={handleAdminNotice}> Manage Notice </button>
             <button className="btn btn-danger me-3" onClick={()=>navigate("/admin/manageCollege")}> Manage Colleges</button>
-            <div className="mb-3">
-                <button className="btn btn-success" onClick={() => setShowModal(true)}>Add New User</button>
-            </div>
+            <button className="btn btn-success" onClick={() => setShowModal(true)}>Add New User</button>
+            
             <table className="table mt-4">
                 <thead>
                     <tr>
@@ -177,7 +176,7 @@ const AdminPanel = () => {
             <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Add New User</h5>
+                            <h5 className="modal-title mt-3">Add New User</h5>
                             <button type="button" className="btn-close" onClick={() => setEditModal(false)}></button>
                         </div>
                         <div className="modal-body">
