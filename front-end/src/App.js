@@ -17,6 +17,7 @@ import UserProfile from './components/UserProfile';
 import UserNotice from './components/UserNotice';
 import UserLikedColleges from './components/UserLikedColleges';
 import UserAcademic from './components/UserAcademic';
+import Foryou from './components/Foryou';
 import CollegeDetail from './components/collegeBox/CollegeDetail';
 
 
@@ -40,6 +41,7 @@ const App = () => {
           <Route path='/user/notices' element={<UserNotice />}/>
           <Route path='/user/likedColleges' element={<UserLikedColleges />}/>
           <Route path='/user/academic' element={<UserAcademic />}/>
+          <Route path='/user/foryou' element={<Foryou />}/>
 
           <Route path='/college/:id' element={<CollegeDetail />}/>
 

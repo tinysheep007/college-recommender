@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext.js';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const UserAcademic = () => {
-    const { user } = useAuth();
+    const { user, updateUser } = useAuth();
     const [SAT, setSAT] = useState(0);
     const [GPA, setGPA] = useState(3.5);
     const [extra, setExtra] = useState("music, marching band");
@@ -44,6 +44,7 @@ const UserAcademic = () => {
         axios.put("http://localhost:8000/user/academic/update", temp)
             .then((res) => {
                 alert("Edited successfully!");
+                updateUser({...user, SAT, GPA, extra, others, majors});
             }).catch((err) => {
                 alert(err);
                 console.log(err);
