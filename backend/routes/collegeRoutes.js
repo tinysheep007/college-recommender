@@ -29,6 +29,89 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Search colleges by name
+router.get('/search/input', (req, res) => {
+    const { searchTerm } = req.query; // Using req.query to get the searchTerm
+
+    if (!searchTerm) {
+        return res.status(400).json({ error: 'Search term is required' });
+    }
+
+    const sql = 'SELECT * FROM collegebasics WHERE collegeName LIKE ?';
+    const values = [`%${searchTerm}%`];
+
+    db.query(sql, values, (err, results) => {
+        if (err) {
+            console.error('Error searching colleges:', err);
+            return res.status(500).json({ error: 'Failed to search colleges' });
+        }
+
+        res.json(results);
+    });
+});
+
+
+// search for closest match college based on SAT and GPA
+router.get('/search/closest', (req, res) => {
+    const { SAT, GPA } = req.query;
+    // console.log(SAT)
+    // console.log(GPA)
+
+    if (!SAT || !GPA) {
+        return res.status(400).json({ error: 'SAT and GPA are required' });
+    }
+
+    const userSAT = parseInt(SAT, 10);
+    const userGPA = parseFloat(GPA);
+
+    const sql = `
+        SELECT *, 
+            ABS(aveSAT - ?) / 1600 + ABS(aveGPA - ?) / 4.0 AS closeness
+        FROM collegebasics
+        ORDER BY closeness ASC
+    `;
+
+    db.query(sql, [userSAT, userGPA], (err, results) => {
+        if (err) {
+            console.error('Error searching colleges:', err);
+            return res.status(500).json({ error: 'Failed to search colleges' });
+        }
+
+        res.json(results);
+    });
+});
+
+// search colleges based on range of SAT and GPA
+router.get('/search/range', (req, res) => {
+    const { minSAT, maxSAT, minGPA, maxGPA } = req.query;
+
+    if (!minSAT || !maxSAT || !minGPA || !maxGPA) {
+        return res.status(400).json({ error: 'Minimum and maximum SAT and GPA values are required' });
+    }
+
+    const minSATValue = parseInt(minSAT, 10);
+    const maxSATValue = parseInt(maxSAT, 10);
+    const minGPAValue = parseFloat(minGPA);
+    const maxGPAValue = parseFloat(maxGPA);
+
+    const sql = `
+        SELECT * 
+        FROM collegebasics
+        WHERE aveSAT BETWEEN ? AND ?
+        AND aveGPA BETWEEN ? AND ?
+    `;
+
+    db.query(sql, [minSATValue, maxSATValue, minGPAValue, maxGPAValue], (err, results) => {
+        if (err) {
+            console.error('Error searching colleges by range:', err);
+            return res.status(500).json({ error: 'Failed to search colleges by range' });
+        }
+
+        res.json(results);
+    });
+});
+
+
 // Create a new college
 router.post('/create', (req, res) => {
     const { collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks, idCollegeDetails, loc } = req.body;
