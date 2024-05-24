@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link, useNavigate } from 'react-router-dom'; // Import Link from React Router
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import axios from 'axios';
 
 const UserRegister = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigate = useNavigate(); 
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -15,8 +17,32 @@ const UserRegister = () => {
             .then(response => {
                 if (response.data.success) {
                     // Registration successful
-                    console.log('User registered successfully');
+                    alert('User registered successfully');
                     // Optionally, redirect user to login page or perform other actions
+                    
+                    let tempID = response.data.userId;
+                    
+                    let obj = {
+                        idusers: tempID,
+                        SAT: 1200,
+                        GPA: 3.5,
+                        extra: "",
+                        others: "",
+                        majors: ""
+                    };
+                    axios.post("http://localhost:8000/user/academic/create", obj)
+                        .then((res) => {
+                            console.log("New profile created");
+
+                            navigate("/landingPage")
+                           
+
+                        }).catch((err) => {
+                            console.log(err);
+                        });
+                        
+                
+                
                 } else {
                     // Registration failed
                     console.error('Failed to register user:', response.data.error);

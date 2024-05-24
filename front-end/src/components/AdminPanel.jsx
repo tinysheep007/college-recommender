@@ -51,9 +51,28 @@ const AdminPanel = () => {
             .then(response => {
                 if (response.data.success) {
                     // Registration successful
-                    console.log('User registered successfully');
-                    alert('User registered successfully')
-                    window.location.reload();
+                    // console.log('User registered successfully');
+                    
+
+                    let tempID = response.data.userId;
+                    
+                    let obj = {
+                        idusers: tempID,
+                        SAT: 1200,
+                        GPA: 3.5,
+                        extra: "",
+                        others: "",
+                        majors: ""
+                    };
+                    axios.post("http://localhost:8000/user/academic/create", obj)
+                        .then((res) => {
+                            alert('User registered successfully');
+                        }).catch((err) => {
+                            console.log(err);
+                        });
+
+                    fetchUsers();
+                    
                     // Optionally, redirect user to login page or perform other actions
                 } else {
                     // Registration failed
@@ -120,8 +139,8 @@ const AdminPanel = () => {
             <button className="btn btn-danger me-3" onClick={handleAdminLogout}>Logout </button>
             <button className="btn btn-danger me-3" onClick={handleAdminNotice}> Manage Notice </button>
             <button className="btn btn-danger me-3" onClick={()=>navigate("/admin/manageCollege")}> Manage Colleges</button>
-            <button className="btn btn-success" onClick={() => setShowModal(true)}>Add New User</button>
-            
+            <button className="btn btn-success me-3" onClick={() => setShowModal(true)}>Add New User</button>
+            <button className="btn btn-success" onClick={()=>navigate("/admin/manageSuggest")}>Manage Users' Suggested Colleges</button>
             <table className="table mt-4">
                 <thead>
                     <tr>

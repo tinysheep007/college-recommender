@@ -122,6 +122,7 @@ const LandingPage = () => {
                 <Link to="/user/notices" className="btn btn-success me-2">User Notice</Link>
                 <Link to="/user/likedColleges" className='btn btn-success me-2'>Liked/Saved Colleges</Link>
                 <Link to="/user/foryou" className='btn btn-success me-2'>Recommended For You</Link>
+                <Link to="/user/suggest" className='btn btn-success me-2'>Suggest to Add a College</Link>
                 { user && (
                     <button className="btn btn-danger" onClick={handleUserLogOut}>
                         Logout

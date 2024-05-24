@@ -11,12 +11,14 @@ import AdminPanel from './components/AdminPanel';
 import AdminNotice from './components/AdminNotice';
 import AdminManageCollege from './components/AdminManageCollege';
 import AdminManageCollegInfo from './components/AdminManageCollegeInfo';
+import AdminManageSuggest from './components/AdminManageSuggest';
 
 import UserRegister from './components/UserRegister';
 import UserProfile from './components/UserProfile';
 import UserNotice from './components/UserNotice';
 import UserLikedColleges from './components/UserLikedColleges';
 import UserAcademic from './components/UserAcademic';
+import UserSuggest from './components/UserSuggest';
 import Foryou from './components/Foryou';
 import CollegeDetail from './components/collegeBox/CollegeDetail';
 
@@ -35,6 +37,7 @@ const App = () => {
           <Route path="/admin/notices" element={<AdminNotice />}/>
           <Route path='/admin/manageCollege' element={<AdminManageCollege />}/>
           <Route path='/admin/manageCollegeInfo' element={<AdminManageCollegInfo />}/>
+          <Route path='/admin/manageSuggest' element={<AdminManageSuggest />}/>
 
           <Route path="/user/register" element={<UserRegister />} />
           <Route path='/user/profile'element={<UserProfile />} />
@@ -42,7 +45,7 @@ const App = () => {
           <Route path='/user/likedColleges' element={<UserLikedColleges />}/>
           <Route path='/user/academic' element={<UserAcademic />}/>
           <Route path='/user/foryou' element={<Foryou />}/>
-
+          <Route path='/user/suggest' element={<UserSuggest />}/>
           <Route path='/college/:id' element={<CollegeDetail />}/>
 
         </Routes>

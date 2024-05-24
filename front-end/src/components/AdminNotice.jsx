@@ -96,8 +96,8 @@ const AdminNotice = () => {
     return (
         <div className="container">
             <h1>Admin Notice Page</h1>
-            <button className="btn btn-success mb-3" onClick={handleCreateClick}>Create Notice</button>
-            <button className="btn btn-success mb-3" onClick={handleBack}>Back to Panel</button>
+            <button className="btn btn-success me-3" onClick={handleCreateClick}>Create Notice</button>
+            <button className="btn btn-success me-3" onClick={handleBack}>Back to Panel</button>
             {notices.length > 0 ? (
                 notices.map((data, index) => (
                     <div key={index} className="mb-3 p-3 border rounded">
