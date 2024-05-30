@@ -11,11 +11,19 @@ const CollegeDetail = () => {
     const { id } = useParams();
     const [college, setCollege] = useState(null);
     const [idusers, setIdUsers] = useState(0);
+    const [SAT, setSAT] = useState(0);
+    const [GPA, setGPA] = useState(3.0);
+    const [decision, setDecision] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchCollegeDetails();
-        setIdUsers(user.idusers);
-    }, []);
+        if (user) {
+            setIdUsers(user.idusers);
+            fetchCollegeDetails();
+        } else {
+            setLoading(true);
+        }
+    }, [user]);
 
     const fetchCollegeDetails = () => {
         axios.get(`http://localhost:8000/college/${id}`)
@@ -24,27 +32,28 @@ const CollegeDetail = () => {
                 if (response.data.idCollege) {
                     axios.get(`http://localhost:8000/college/collegeinfo/${response.data.idCollege}`)
                         .then(infoResponse => {
-                            if (infoResponse.data) {
-                                setCollege(prevCollege => ({
-                                    ...prevCollege,
-                                    collegeInfo: infoResponse.data
-                                }));
-                            } else {
-                                setCollege(prevCollege => ({
-                                    ...prevCollege,
-                                    collegeInfo: null
-                                }));
-                            }
+                            setCollege(prevCollege => ({
+                                ...prevCollege,
+                                collegeInfo: infoResponse.data || null
+                            }));
+                            setLoading(false);
                         })
-                        .catch(error => console.log(error));
+                        .catch(error => {
+                            console.log(error);
+                            setLoading(false);
+                        });
                 } else {
                     setCollege(prevCollege => ({
                         ...prevCollege,
                         collegeInfo: null
                     }));
+                    setLoading(false);
                 }
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log(error);
+                setLoading(false);
+            });
     };
 
     const likeNewCollege = () => {
@@ -60,6 +69,29 @@ const CollegeDetail = () => {
                 alert(`Error liking college: ${err.response.data.error}`);
             });
     };
+
+    const handleSubmitDecision = () => {
+        const obj = {
+            idusers: user.idusers,
+            idCollege: parseInt(id, 10),
+            SAT,
+            GPA,
+            decision
+        };
+        console.log(obj);
+
+        axios.post("http://localhost:8000/college/collegedecision", obj)
+            .then((res) => {
+                alert("added new decision");
+                window.location.reload();
+            }).catch((err) => {
+                console.log(err);
+            });
+    };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="container mt-5">
@@ -93,17 +125,43 @@ const CollegeDetail = () => {
                     ) : (
                         <p>No details available</p>
                     )}
-                    <DecisionsChart idCollege={id}/>
-                    <Comment idCollege={id}/>
+                    <DecisionsChart idCollege={id} />
+
+                    {/* submit new decision */}
+                    <div className="container mt-5">
+                        <div className="card">
+                            <div className="card-body">
+                                <div>
+                                    <div>
+                                        <label htmlFor="SAT">SAT </label>
+                                        <input type="number" id="SAT" className="form-control" name="SAT" value={SAT} onChange={(e) => setSAT(e.target.value)} />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="GPA">GPA </label>
+                                        <input type="number" id="GPA" className="form-control" name="GPA" value={GPA} onChange={(e) => setGPA(e.target.value)} />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="decision">Decision - (accepted / rejected / waitlisted)</label>
+                                        <input type="text" id="decision" className="form-control" name="decision" value={decision} onChange={(e) => setDecision(e.target.value)} />
+                                    </div>
+
+                                    <button className="btn btn-primary btn-block" onClick={handleSubmitDecision}>Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <Comment idCollege={id} />
+
                 </div>
             ) : (
                 <p>Loading college details...</p>
             )}
-
-            
         </div>
     );
-    
+
 };
 
 export default CollegeDetail;

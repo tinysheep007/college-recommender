@@ -44,7 +44,7 @@ const Foryou = () => {
     };
 
     return (
-        <div className="container mt-5 p-4 bg-light rounded">
+        <div className="container mt-5 p-4 rounded">
             <h1 className="mb-4 text-dark">For You</h1>
             <Link to="/landingPage" className='btn btn-success mb-3'>Back to Landing Page</Link>
             <div className="row">

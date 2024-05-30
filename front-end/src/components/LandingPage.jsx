@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import CollegeList from './collegeBox/CollegeList';
+import { FaUser, FaBell, FaHeart, FaThumbsUp, FaPlus, FaSignOutAlt } from 'react-icons/fa';
 
 const LandingPage = () => {
     const { isAuthenticated, user, userLogout } = useAuth(); // Destructure the user from useAuth
@@ -115,25 +116,37 @@ const LandingPage = () => {
 
     return (
         <div className="container mt-5">
-            <h1>College Recommender</h1>
+            <h1 className='fw-bold fs-12 mb-4'>College Recommender</h1>
 
             <div className="my-3">
-                <Link to="/user/profile" className="btn btn-success me-2">User Profile</Link>
-                <Link to="/user/notices" className="btn btn-success me-2">User Notice</Link>
-                <Link to="/user/likedColleges" className='btn btn-success me-2'>Liked/Saved Colleges</Link>
-                <Link to="/user/foryou" className='btn btn-success me-2'>Recommended For You</Link>
-                <Link to="/user/suggest" className='btn btn-success me-2'>Suggest to Add a College</Link>
-                { user && (
-                    <button className="btn btn-danger" onClick={handleUserLogOut}>
-                        Logout
-                    </button>
-                )}
+                    <Link to="/user/profile" className="btn btn-outline-success me-2 ">
+                        <FaUser className="me-1" /> User Profile
+                    </Link>
+                    <Link to="/user/notices" className="btn btn-outline-info me-2">
+                        <FaBell className="me-1" /> User Notice
+                    </Link>
+                    <Link to="/user/likedColleges" className='btn btn-outline-danger me-2 '>
+                        <FaHeart className="me-1" /> Liked/Saved Colleges
+                    </Link>
+                    <Link to="/user/foryou" className='btn btn-outline-warning me-2 '>
+                        <FaThumbsUp className="me-1" /> Recommended For You
+                    </Link>
+                    <Link to="/user/suggest" className='btn btn-outline-primary me-2 '>
+                        <FaPlus className="me-1" /> Suggest to Add a College
+                    </Link>
+                    { user && (
+                        <button className="btn btn-outline-secondary " onClick={handleUserLogOut}>
+                            <FaSignOutAlt className="me-1" /> Logout
+                        </button>
+                    )}
             </div>
+        
+
 
             {/* Check if user is authenticated before rendering */}
             {isAuthenticated && (
                 <div className="mb-3">
-                    <p>Welcome, {user.username}!</p>
+                    <p className='fs-6 fw-bold'>Welcome, {user.username}!</p>
                 </div>
             )}
 

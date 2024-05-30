@@ -5,37 +5,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Home = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container">
-                    <Link className="navbar-brand" to="/">College Recommender</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/about">About</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/contact">Contact</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
                     <h1 className="display-4">Welcome to College Recommender</h1>
                     <p className="lead">Your ultimate tool to find the best college for you.</p>
-                    <Link className="btn btn-primary btn-sm" to="/login">Login</Link>
+                    
+                    <p>
+                        Our College Recommender app helps you find the perfect college that matches your academic profile and preferences. Administrators can manage user accounts, user notices, and college information, as well as approve new school suggestions. Basic users can log in or register, browse and search for colleges, add favorites, update their profile and academic information, and receive personalized college suggestions. Stay informed with user notices and engage with college details through comments.
+                    </p>
+                    <p>
+                        Start your journey towards finding the best college with College Recommender!
+                    </p>
+                    <Link className="btn btn-primary btn-sm fs-3" to="/login">Begin Browsing</Link>
+
+                    <div className="mt-4">
+                        <img src="./cover.png" alt="College 1" className="img-fluid me-3 width-400" />
+                    </div>
                 </div>
             </div>
-
-            
         </div>
     );
 }

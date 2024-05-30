@@ -23,7 +23,7 @@ const UserNotice = () => {
         <div className="container">
             <h1>User Notices</h1>
             <div>
-                <Link to="/landingPage" className="btn btn-success">Back to Landing Page</Link>
+                <Link to="/landingPage" className="btn btn-success mb-3">Back to Landing Page</Link>
             </div>
             {notices.length > 0 ? (
                 notices.map((data, index) => (
