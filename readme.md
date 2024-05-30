@@ -1,5 +1,12 @@
 # College Recomander
 
+# Table of Contents
+- [Jump to Showcase](#showcase)
+
+Some introductory text or other content here.
+
+
+
 ### What is this project about?
 
 This is a full stack web application built using React as front end, back end with Node and express, and database with MySQL. This project is suppose to be a college recomannder that helps high shool student or anyone else to pick their desired college to apply. You would be able to search for college by name and ranges of SAT and GPA. You can save the college like in a list, comment on your favorite choice to discuss with others, browse all the recent decisions with students' stats of grades.
@@ -150,7 +157,8 @@ restyle home details page
 'version_compile_os', 'Win64'
 'version_compile_zlib', '1.2.11'
 
-## Showcase
+# Showcase
+Here is the showcase section you wanted to jump to.
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/3c325614-34cd-4b48-897a-249b392f3d6d)
 
