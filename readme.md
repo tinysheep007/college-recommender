@@ -3,6 +3,7 @@
 # Some Useful Links
 - [Showcase the project with pictures](#showcase)
 - [Functionality](#Functionality)
+- [Database setup](#sql-tables)
 
 ### What is this project about?
 
