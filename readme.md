@@ -1,11 +1,8 @@
 # College Recomander
 
-# Table of Contents
-- [Jump to Showcase](#showcase)
-
-Some introductory text or other content here.
-
-
+# Some Useful Links
+- [Showcase the project with pictures](#showcase)
+- [Functionality](#Functionality)
 
 ### What is this project about?
 
