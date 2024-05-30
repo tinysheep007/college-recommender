@@ -37,7 +37,7 @@ const Login = () => {
 
     return (
         <div className="container">
-            <h2 className="mt-5">Login</h2>
+            <h2 className="mt-5 fw-bold">Login</h2>
             <form onSubmit={handleLogin}>
                 <div className="mb-3">
                     <label className="form-label">Username:</label>
@@ -55,7 +55,27 @@ const Login = () => {
                 <Link to="/" className="btn btn-success">Home</Link>
             </form>
             <div className="mt-3">
-                <p>Don't have an account?</p>
+                <p>Don't have an account? We can use sample account  </p>
+                <div>
+                    For regular user: 
+                    <div>
+                        username: a
+                    </div> 
+                    <div>
+                        password: a
+                    </div> 
+                </div>
+                <p></p>
+                <div className='mb-3'>
+                    For admin: 
+                    <div>
+                        username: admin
+                    </div> 
+                    <div>
+                        password: admin
+                    </div> 
+                    
+                </div>
                 <Link to="/user/register" className="btn btn-success me-2">User Registration</Link>
                 <Link to="/admin/register" className="btn btn-warning">Admin Registration</Link>
             </div>

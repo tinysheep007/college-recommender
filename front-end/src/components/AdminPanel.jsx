@@ -134,7 +134,7 @@ const AdminPanel = () => {
 
     return (
         <div className="container">
-            <h2 className="mt-5">Admin Panel</h2>
+            <h2 className="mt-5 fw-bold">Admin Panel</h2>
             <p>Welcome, {admin && admin.username}</p> 
             <button className="btn btn-danger me-3" onClick={handleAdminLogout}>Logout </button>
             <button className="btn btn-danger me-3" onClick={handleAdminNotice}> Manage Notice </button>

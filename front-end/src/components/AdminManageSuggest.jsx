@@ -84,7 +84,7 @@ const AdminManageSuggest = () => {
     return (
         <div className="container mt-4">
             <h1>Manage Suggested Colleges</h1>
-            <Link to="/admin/Panel" className='btn btn-success me-2'>Back to Panel</Link>
+            <Link to="/admin/Panel" className='btn btn-success me-2 mb-3'>Back to Panel</Link>
             <table className="table table-striped">
                 <thead>
                     <tr>

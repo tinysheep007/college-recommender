@@ -7,8 +7,8 @@ const Home = () => {
         <div>
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
-                    <h1 className="display-4">Welcome to College Recommender</h1>
-                    <p className="lead">Your ultimate tool to find the best college for you.</p>
+                    <h1 className="display-4 fw-bold">Welcome to College Recommender</h1>
+                    <p className="lead fw-bold">Your ultimate tool to find the best college for you.</p>
                     
                     <p>
                         Our College Recommender app helps you find the perfect college that matches your academic profile and preferences. Administrators can manage user accounts, user notices, and college information, as well as approve new school suggestions. Basic users can log in or register, browse and search for colleges, add favorites, update their profile and academic information, and receive personalized college suggestions. Stay informed with user notices and engage with college details through comments.

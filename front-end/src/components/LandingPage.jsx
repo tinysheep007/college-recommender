@@ -116,7 +116,7 @@ const LandingPage = () => {
 
     return (
         <div className="container mt-5">
-            <h1 className='fw-bold fs-12 mb-4'>College Recommender</h1>
+            <h1 className='fw-bold fs-1 mb-4'>College Recommender</h1>
 
             <div className="my-3">
                     <Link to="/user/profile" className="btn btn-outline-success me-2 ">
