@@ -65,7 +65,8 @@ router.post('/register', (req, res) => {
                         console.error('Error registering user:', err);
                         res.status(500).json({ error: 'Failed to register user', success: false });
                     } else {
-                        res.json({ success: true });
+                        const userId = results.insertId; // The variable name can be anything
+                        res.json({ success: true, userId: userId });
                     }
                 });
             }
@@ -212,6 +213,70 @@ router.put("/academic/update", (req, res) => {
 
             res.status(200).json({ message: 'User academic info updated successfully' });
         });
+    });
+});
+
+// get all suggest
+router.get('/suggest', (req, res) => {
+    db.query('SELECT * FROM collegesuggest', (err, results) => {
+        if (err) {
+            console.error('Error fetching college suggestions:', err);
+            res.status(500).json({ error: 'Failed to fetch college suggestions' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// get suggestions by ID
+router.get('/suggest/user/:idusers', (req, res) => {
+    const { idusers } = req.params;
+
+    const query = 'SELECT * FROM collegesuggest WHERE idusers = ?';
+
+    db.query(query, [idusers], (err, results) => {
+        if (err) {
+            console.error('Error fetching college suggestions for user:', err);
+            res.status(500).json({ error: 'Failed to fetch college suggestions for user' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// create
+router.post('/suggest/:idusers', (req, res) => {
+    const { idusers } = req.params;
+    const { collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks } = req.body;
+
+    const query = `
+        INSERT INTO collegesuggest (idusers, collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    db.query(query, [idusers, collegeName, picURL, aveSAT, aveGPA, tuition, accRate, ranks], (err, results) => {
+        if (err) {
+            console.error('Error inserting college suggestion:', err);
+            res.status(500).json({ error: 'Failed to create college suggestion', success: false });
+        } else {
+            res.json({ success: true, idcollegesuggest: results.insertId });
+        }
+    });
+});
+
+// delete
+router.delete('/suggest/:idcollegesuggest', (req, res) => {
+    const { idcollegesuggest } = req.params;
+
+    const query = 'DELETE FROM collegesuggest WHERE idcollegesuggest = ?';
+
+    db.query(query, [idcollegesuggest], (err, results) => {
+        if (err) {
+            console.error('Error deleting college suggestion:', err);
+            res.status(500).json({ error: 'Failed to delete college suggestion', success: false });
+        } else {
+            res.json({ success: true });
+        }
     });
 });
   

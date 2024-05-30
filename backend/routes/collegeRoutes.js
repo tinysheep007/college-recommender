@@ -458,4 +458,48 @@ router.delete('/collegecomment/:id', (req, res) => {
 });
 
 
+// Get all college decisions
+router.get('/collegedecisions/getAll', (req, res) => {
+    db.query('SELECT * FROM collegedecisions', (err, results) => {
+        if (err) {
+            console.error('Error fetching college decisions:', err);
+            res.status(500).json({ error: 'Failed to fetch college decisions' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+
+// Create a new college decision
+router.post('/collegedecision', (req, res) => {
+    const { idusers, idCollege, SAT, GPA, extra, decision } = req.body;
+    const query = 'INSERT INTO collegedecisions (idusers, idCollege, SAT, GPA, extra, decision) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(query, [idusers, idCollege, SAT, GPA, extra, decision], (err, results) => {
+        if (err) {
+            console.error('Error adding college decision:', err);
+            res.status(500).json({ error: 'Failed to add college decision' });
+        } else {
+            res.json({ success: true, message: 'College decision added successfully', id: results.insertId });
+        }
+    });
+});
+
+// delete route 
+router.delete('/collegedecision/:id', (req, res) => {
+    const { id } = req.params;
+    const query = 'DELETE FROM collegedecisions WHERE idcollegedecisions = ?';
+    db.query(query, [id], (err, results) => {
+        if (err) {
+            console.error('Error deleting college decision:', err);
+            res.status(500).json({ error: 'Failed to delete college decision' });
+        } else {
+            res.json({ success: true, message: 'College decision deleted successfully' });
+        }
+    });
+});
+
+
+
+
 module.exports = router;
