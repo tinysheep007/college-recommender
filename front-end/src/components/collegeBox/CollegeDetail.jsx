@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useAuth } from '../../context/AuthContext.js';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import Comment from '../comment/Comment.jsx';
+import DecisionsChart from './DecisionsChart.jsx';
 
 const CollegeDetail = () => {
     const { user } = useAuth();
@@ -92,7 +93,7 @@ const CollegeDetail = () => {
                     ) : (
                         <p>No details available</p>
                     )}
-
+                    <DecisionsChart idCollege={id}/>
                     <Comment idCollege={id}/>
                 </div>
             ) : (

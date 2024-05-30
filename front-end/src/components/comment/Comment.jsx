@@ -17,7 +17,7 @@ const Comment = ({ idCollege }) => {
     const fetchAllComments = () => {
         axios.get(`http://localhost:8000/college/collegecomment/${idCollege}`)
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 setData(res.data);
             }).catch((err) => {
                 console.log(err);
