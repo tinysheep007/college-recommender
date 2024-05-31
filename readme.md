@@ -1,6 +1,7 @@
 # College Recomander
 
 # Some Useful Links
+
 - [Showcase the project with pictures](#showcase)
 - [Functionality](#Functionality)
 - [Database setup](#sql-tables)
@@ -156,36 +157,58 @@ restyle home details page
 'version_compile_zlib', '1.2.11'
 
 # Showcase
-Here is the showcase section you wanted to jump to.
+
+Main Page:
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/3c325614-34cd-4b48-897a-249b392f3d6d)
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/a734323f-ada9-4fb5-8955-1011b284cce7)
+College details page (need more styling):
 
+![image](https://github.com/tinysheep007/college-recommender/assets/58338071/a734323f-ada9-4fb5-8955-1011b284cce7)
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/4c89666a-a9da-4d37-a705-8ed53290259a)
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/84a23201-3de9-415f-b8a0-d23c7a93f1d9)
 
+Users can acess all admin posted notices:
+
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/7735ea19-3f09-4383-b460-6579df2dfb57)
+
+User's saved/liked colleges:
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/d2602b35-a806-4e69-b91c-795e729fc9af)
 
+Suggested colleges that closely matches with the status of the user:
+
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/7e75ca28-ad41-4b0f-afab-a5b59541c6e0)
 
+User can suggest to add a new college that is not in the current database:
+
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/2c85ebdb-e264-43ec-ae42-8d6e889a3dc8)
+
+Usercan update their own profiles:
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/0c1f498f-92d4-4326-a08c-673f57e018a0)
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/2b72c612-a856-457b-b78a-ba2400bbb8aa)
 
+Login page for both admin and users:
+
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/0fbfaa5f-9566-48f7-ac08-ec77e1f5b861)
+
+Admin panel:
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/ca670535-5dfe-475f-85b1-8f2bf2e87f3d)
 
+Admin can create new notices:
+
 ![1717110100482](image/readme/1717110100482.png)
 
+Admin can manage all colleges:
+
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/34b0ba1a-556b-4ec6-b35d-313bdf9b940b)
+
+Admin can edit all infos about colleges:
 
 ![image](https://github.com/tinysheep007/college-recommender/assets/58338071/db92f252-3aab-4571-984c-cdeb2960f084)
 
