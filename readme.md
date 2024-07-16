@@ -1,20 +1,43 @@
-# College Recomander
+# College Recommender ☺️
 
-# Some Useful Links
+## Some Useful Links 🔗
 
-- [Showcase the project with pictures](#showcase)
-- [Functionality](#Functionality)
-- [Database setup](#sql-tables)
+- [Showcase the Project with Pictures](#showcase-the-project-with-pictures)
+- [Functionality](#functionality)
+- [Database Setup](#database-setup)
 
-### What is this project about?
+---
 
-This is a full stack web application built using React as front end, back end with Node and express, and database with MySQL. This project is suppose to be a college recomannder that helps high shool student or anyone else to pick their desired college to apply. You would be able to search for college by name and ranges of SAT and GPA. You can save the college like in a list, comment on your favorite choice to discuss with others, browse all the recent decisions with students' stats of grades.
+### What is this Project About? 📚
 
-### How to run the application?
+College Recommender is a full-stack web application designed to help high school students or anyone looking to apply to college find their ideal institutions. Built with React for the front end, Node and Express for the back end, and MySQL for the database, this project offers a range of features:
 
-To run the application, first ensure you have MySQL database set up properly. We need to start both front end and back end individually. For front end, use any IDE go to the front-end folder, and "npm start" in the terminal or powershell. For backend, use any IDE go to the backend folder, on your terminal o powershell type in "nodemon app.js"
+- **Search Colleges:** Find colleges by name or filter by SAT and GPA ranges.
+- **Save Favorites:** Create a list of preferred colleges.
+- **Comments and Discussions:** Engage with others by commenting on your favorite choices.
+- **Browse Decisions:** View recent college decisions along with students' grades and stats.
 
-## Functionality
+---
+
+### How to Run the Application 🏃
+
+1. **Set Up the Database:**
+   Ensure you have a MySQL database properly set up. Follow the instructions in the [Database Setup](#database-setup) section.
+
+2. **Start the Front End:**
+   Navigate to the `front-end` folder using any IDE. Open a terminal or PowerShell and run:
+   ```
+   npm start
+   ```
+
+3. **Start the Back End:**
+
+ For backend, use any IDE go to the backend folder, on your terminal o powershell type in 
+ ```
+ nodemon app.js
+```
+
+## Functionality ⚙️
 
 ### More Detailed Configuration for Database
 
