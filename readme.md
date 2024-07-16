@@ -2,9 +2,9 @@
 
 ## Some Useful Links 🔗
 
-- [Showcase the Project with Pictures](#Showcase)
+- [Showcase the Project with Pictures](#showcase--)
 - [Functionality](#functionality--%EF%B8%8F)
-- [Database Setup](#sql-tables)
+- [Database Setup](#sql-tables--)
 
 ---
 
