@@ -3,7 +3,7 @@
 ## Some Useful Links 🔗
 
 - [Showcase the Project with Pictures](#Showcase)
-- [Functionality](#functionality)
+- [Functionality](#functionality--%EF%B8%8F)
 - [Database Setup](#sql-tables)
 
 ---
