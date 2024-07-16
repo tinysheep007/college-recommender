@@ -183,56 +183,52 @@ restyle home details page
 
 Main Page:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/3c325614-34cd-4b48-897a-249b392f3d6d)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/3c325614-34cd-4b48-897a-249b392f3d6d" alt="Main Page" width="600">
 
 College details page (need more styling):
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/a734323f-ada9-4fb5-8955-1011b284cce7)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/a734323f-ada9-4fb5-8955-1011b284cce7" alt="College Details 1" width="600">
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/4c89666a-a9da-4d37-a705-8ed53290259a" alt="College Details 2" width="600">
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/84a23201-3de9-415f-b8a0-d23c7a93f1d9" alt="College Details 3" width="600">
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/4c89666a-a9da-4d37-a705-8ed53290259a)
+Users can access all admin posted notices:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/84a23201-3de9-415f-b8a0-d23c7a93f1d9)
-
-Users can acess all admin posted notices:
-
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/7735ea19-3f09-4383-b460-6579df2dfb57)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/7735ea19-3f09-4383-b460-6579df2dfb57" alt="Admin Notices" width="600">
 
 User's saved/liked colleges:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/d2602b35-a806-4e69-b91c-795e729fc9af)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/d2602b35-a806-4e69-b91c-795e729fc9af" alt="Saved Colleges" width="600">
 
-Suggested colleges that closely matches with the status of the user:
+Suggested colleges that closely match with the status of the user:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/7e75ca28-ad41-4b0f-afab-a5b59541c6e0)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/7e75ca28-ad41-4b0f-afab-a5b59541c6e0" alt="Suggested Colleges" width="600">
 
-User can suggest to add a new college that is not in the current database:
+User can suggest adding a new college that is not in the current database:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/2c85ebdb-e264-43ec-ae42-8d6e889a3dc8)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/2c85ebdb-e264-43ec-ae42-8d6e889a3dc8" alt="Suggest a College" width="600">
 
-Usercan update their own profiles:
+User can update their own profiles:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/0c1f498f-92d4-4326-a08c-673f57e018a0)
-
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/2b72c612-a856-457b-b78a-ba2400bbb8aa)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/0c1f498f-92d4-4326-a08c-673f57e018a0" alt="Update Profile 1" width="600">
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/2b72c612-a856-457b-b78a-ba2400bbb8aa" alt="Update Profile 2" width="600">
 
 Login page for both admin and users:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/0fbfaa5f-9566-48f7-ac08-ec77e1f5b861)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/0fbfaa5f-9566-48f7-ac08-ec77e1f5b861" alt="Login Page" width="600">
 
 Admin panel:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/ca670535-5dfe-475f-85b1-8f2bf2e87f3d)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/ca670535-5dfe-475f-85b1-8f2bf2e87f3d" alt="Admin Panel" width="600">
 
 Admin can create new notices:
 
-![1717110100482](image/readme/1717110100482.png)
+<img src="image/readme/1717110100482.png" alt="Create Notices" width="600">
 
 Admin can manage all colleges:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/34b0ba1a-556b-4ec6-b35d-313bdf9b940b)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/34b0ba1a-556b-4ec6-b35d-313bdf9b940b" alt="Manage Colleges" width="600">
 
-Admin can edit all infos about colleges:
+Admin can edit all info about colleges:
 
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/db92f252-3aab-4571-984c-cdeb2960f084)
-
-![image](https://github.com/tinysheep007/college-recommender/assets/58338071/316a0a61-1a5e-4bf1-aa81-7cea13a3e17e)
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/db92f252-3aab-4571-984c-cdeb2960f084" alt="Edit Colleges 1" width="600">
+<img src="https://github.com/tinysheep007/college-recommender/assets/58338071/316a0a61-1a5e-4bf1-aa81-7cea13a3e17e" alt="Edit Colleges 2" width="600">
