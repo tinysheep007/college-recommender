@@ -179,7 +179,7 @@ restyle home details page
 'version_compile_os', 'Win64'
 'version_compile_zlib', '1.2.11'
 
-# Showcase
+## Showcase
 
 Main Page:
 
