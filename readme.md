@@ -3,8 +3,8 @@
 ## Some Useful Links 🔗
 
 - [Showcase the Project with Pictures](#Showcase)
-- [Functionality](#Functionality)
-- [Database Setup](#SQL——tables)
+- [Functionality](#functionality)
+- [Database Setup](#sql-tables)
 
 ---
 
