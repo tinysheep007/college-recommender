@@ -37,7 +37,7 @@ College Recommender is a full-stack web application designed to help high school
  nodemon app.js
 ```
 
-## Functionality ⚙️
+### Functionality ⚙️
 
 ### More Detailed Configuration for Database
 
